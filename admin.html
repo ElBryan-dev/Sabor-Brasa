@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Panel de Reservas | Sabor a Brasa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+    <!-- Login -->
+    <section id="login-screen" class="login-screen">
+        <form id="login-form" class="login-card">
+            <a href="index.html" class="logo">Sabor<span>Brasa</span></a>
+            <p class="login-sub">Panel de reservas &middot; Personal</p>
+            <label for="pin">PIN de acceso</label>
+            <input type="password" id="pin" inputmode="numeric" autocomplete="current-password" placeholder="••••" required>
+            <p class="form-general-error" id="login-error"></p>
+            <button type="submit" class="btn-primary full-width">Ingresar</button>
+            <p class="login-note">PIN de demostración: <strong>1234</strong> (cámbialo en <code>js/admin.js</code>).</p>
+        </form>
+    </section>
+
+    <!-- Panel -->
+    <div id="admin-app" class="admin-app" hidden>
+        <header class="admin-header">
+            <a href="index.html" class="logo">Sabor<span>Brasa</span></a>
+            <span class="admin-tag">Reservas</span>
+            <div class="admin-header-actions">
+                <a href="index.html" class="admin-link">Ver sitio</a>
+                <button type="button" class="admin-link" id="logout-btn">Cerrar sesión</button>
+            </div>
+        </header>
+
+        <main class="admin-main">
+            <!-- Barra de herramientas -->
+            <div class="toolbar">
+                <div class="view-switch" role="tablist">
+                    <button type="button" class="view-btn active" data-view="day" role="tab">Por día</button>
+                    <button type="button" class="view-btn" data-view="upcoming" role="tab">Próximas</button>
+                    <button type="button" class="view-btn" data-view="all" role="tab">Historial</button>
+                </div>
+
+                <div class="date-nav" id="date-nav">
+                    <button type="button" class="icon-btn" id="prev-day" aria-label="Día anterior">‹</button>
+                    <input type="date" id="admin-date">
+                    <button type="button" class="icon-btn" id="next-day" aria-label="Día siguiente">›</button>
+                    <button type="button" class="chip-btn" id="today-btn">Hoy</button>
+                </div>
+
+                <div class="toolbar-right">
+                    <button type="button" class="btn-primary" id="new-res-btn">+ Nueva reserva</button>
+                    <button type="button" class="btn-outline" id="export-btn">Exportar CSV</button>
+                </div>
+            </div>
+
+            <h1 class="admin-title" id="admin-title"></h1>
+
+            <!-- KPIs -->
+            <div class="kpis">
+                <div class="kpi"><span class="kpi-label">Reservas activas</span><strong id="kpi-res">0</strong></div>
+                <div class="kpi"><span class="kpi-label">Comensales</span><strong id="kpi-guests">0</strong></div>
+                <div class="kpi kpi-warn"><span class="kpi-label">Por confirmar</span><strong id="kpi-pending">0</strong></div>
+                <div class="kpi"><span class="kpi-label">Ocupación pico</span><strong id="kpi-peak">0%</strong></div>
+            </div>
+
+            <!-- Ocupación por zona y horario -->
+            <section class="panel" id="occupancy-panel">
+                <div class="panel-head">
+                    <h2>Ocupación por zona</h2>
+                    <span class="panel-sub">Comensales sentados o por llegar en cada turno vs. capacidad</span>
+                </div>
+                <div class="occupancy-wrap">
+                    <table class="occupancy" id="occupancy-table"></table>
+                </div>
+            </section>
+
+            <!-- Listado -->
+            <section class="panel">
+                <div class="panel-head">
+                    <h2>Reservas</h2>
+                    <div class="filters">
+                        <input type="search" id="search" placeholder="Buscar nombre, código o celular">
+                        <select id="status-filter">
+                            <option value="">Todos los estados</option>
+                        </select>
+                        <select id="zone-filter">
+                            <option value="">Todas las zonas</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="table-wrap">
+                    <table class="res-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha / Hora</th>
+                                <th>Cliente</th>
+                                <th>Pax</th>
+                                <th>Zona</th>
+                                <th>Detalle</th>
+                                <th>Estado</th>
+                                <th class="th-actions">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="res-tbody"></tbody>
+                    </table>
+                </div>
+                <div class="empty-state" id="empty-state" hidden>
+                    <p>No hay reservas para mostrar.</p>
+                    <button type="button" class="btn-outline" id="seed-btn">Cargar datos de ejemplo</button>
+                </div>
+            </section>
+
+            <p class="admin-disclaimer">
+                Las reservas se guardan en este navegador (localStorage). Para que el personal vea las reservas hechas
+                desde cualquier dispositivo, conecta <code>js/reservas-store.js</code> a un backend (Firebase, Supabase o una API propia).
+            </p>
+        </main>
+    </div>
+
+    <!-- Modal crear / editar -->
+    <div id="edit-modal" class="modal-overlay admin-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="edit-title">
+        <div class="modal-card light">
+            <button class="modal-close" id="edit-close" aria-label="Cerrar">&times;</button>
+            <h3 class="edit-title" id="edit-title">Nueva reserva</h3>
+            <form id="edit-form" novalidate>
+                <input type="hidden" name="id">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="e-name">Nombre</label>
+                        <input type="text" id="e-name" name="name" required>
+                        <small class="field-error" data-error-for="name"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="e-phone">Celular</label>
+                        <input type="tel" id="e-phone" name="phone" required>
+                        <small class="field-error" data-error-for="phone"></small>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="e-guests">Personas</label>
+                        <input type="number" id="e-guests" name="guests" min="1" max="60" required>
+                        <small class="field-error" data-error-for="guests"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="e-zone">Zona</label>
+                        <select id="e-zone" name="zone"></select>
+                        <small class="field-error" data-error-for="zone"></small>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="e-date">Fecha</label>
+                        <input type="date" id="e-date" name="date" required>
+                        <small class="field-error" data-error-for="date"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="e-time">Hora</label>
+                        <select id="e-time" name="time"></select>
+                        <small class="field-error" data-error-for="time"></small>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="e-occasion">Ocasión</label>
+                        <select id="e-occasion" name="occasion">
+                            <option>Cena Casual</option>
+                            <option>Aniversario</option>
+                            <option>Cumpleaños</option>
+                            <option>Reunión de Negocios</option>
+                            <option>Reunión Familiar</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="e-email">Correo</label>
+                        <input type="email" id="e-email" name="email">
+                        <small class="field-error" data-error-for="email"></small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="e-message">Nota / alergias</label>
+                    <textarea id="e-message" name="message" rows="2"></textarea>
+                </div>
+                <p class="form-general-error" id="edit-general"></p>
+                <div class="edit-actions">
+                    <button type="button" class="btn-outline" id="edit-cancel">Cancelar</button>
+                    <button type="submit" class="btn-primary">Guardar</button>
+                </div>
+            </form>
+            <div class="history" id="edit-history" hidden></div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="js/reservas-store.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú Catalog | Sabor a Brasa - Aesthetic Experience</title>
+    <title>Carta | Sabor a Brasa</title>
+    <meta name="description" content="Carta de Sabor a Brasa: pollo a la brasa, parrillas, acompañamientos y bebidas peruanas.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,11 +13,12 @@
     <link rel="stylesheet" href="css/menu-aesthetic.css">
 </head>
 <body>
+    <a href="#pollo-entero" class="skip-link">Ir a la carta</a>
     <header class="menu-header">
         <a href="index.html" class="back-link">← Volver</a>
         
         <nav class="category-nav" aria-label="Categorías del Menú">
-            <button class="cat-pill active" data-target="pollo-entero">01 Brasas</button>
+            <button class="cat-pill active" data-target="pollo-entero" aria-current="true">01 Brasas</button>
             <button class="cat-pill" data-target="parrilla">02 Grill</button>
             <button class="cat-pill" data-target="papas">03 Sides</button>
             <button class="cat-pill" data-target="incagold">04 Drinks</button>
@@ -32,7 +34,7 @@
         <!-- Slide 1: Pollo a la Brasa Entero -->
         <section class="menu-slide" id="pollo-entero">
             <div class="slide-image">
-                <img src="assets/pollo a la brasa entero.jpg" alt="Pollo a la Brasa Entero">
+                <img fetchpriority="high" src="assets/pollo a la brasa entero.jpg" alt="Pollo a la Brasa Entero">
             </div>
             <div class="slide-content">
                 <span class="slide-category">01 / Specials</span>
@@ -47,23 +49,23 @@
         <section class="menu-slide" id="medio-pollo">
             <div class="slide-content">
                 <span class="slide-category">02 / Specials</span>
-                <h1 class="slide-title">Medio<span>Pollo</span></h1>
+                <h2 class="slide-title">Medio<span>Pollo</span></h2>
                 <p class="slide-description">La mitad de nuestra perfección. Ideal para compartir o para un apetito voraz que busca el equilibrio entre pecho y pierna.</p>
                 <div class="slide-price">S/ 38.00</div>
             </div>
             <div class="slide-image">
-                <img src="assets/medio pollo a la brasa.jpg" alt="Medio Pollo a la Brasa">
+                <img loading="lazy" decoding="async" src="assets/medio pollo a la brasa.jpg" alt="Medio Pollo a la Brasa">
             </div>
         </section>
 
         <!-- Slide 3: Cuarto de Pollo -->
         <section class="menu-slide" id="cuarto-pollo">
             <div class="slide-image">
-                <img src="assets/cuarto de pollo.jpg" alt="Cuarto de Pollo">
+                <img loading="lazy" decoding="async" src="assets/cuarto de pollo.jpg" alt="Cuarto de Pollo">
             </div>
             <div class="slide-content">
                 <span class="slide-category">03 / Specials</span>
-                <h1 class="slide-title">Cuarto<span>Pollo</span></h1>
+                <h2 class="slide-title">Cuarto<span>Pollo</span></h2>
                 <p class="slide-description">Tu presa favorita, ya sea pierna o pecho, acompañada de la sazón que nos caracteriza. La medida justa del sabor.</p>
                 <div class="slide-price">S/ 24.00</div>
             </div>
@@ -74,24 +76,24 @@
         <section class="menu-slide" id="parrilla">
             <div class="slide-content">
                 <span class="slide-category">04 / Grill</span>
-                <h1 class="slide-title">Parrilla<span>Sabor</span></h1>
+                <h2 class="slide-title">Parrilla<span>Sabor</span></h2>
                 <p class="slide-description">Una selección premium de cortes: Bife de chorizo, anticuchos de corazón macerados y chuleta de cerdo seleccionada. El ahumado perfecto.</p>
                 <div class="dish-tag">✦ Recomendación del Chef: Término medio-tres cuartos con ají de la casa</div>
                 <div class="slide-price">S/ 85.00</div>
             </div>
             <div class="slide-image">
-                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=90" alt="Parrilla Especial">
+                <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=90" alt="Parrilla Especial">
             </div>
         </section>
 
         <!-- Slide 5: Anticuchos Premium -->
         <section class="menu-slide" id="anticuchos">
             <div class="slide-image">
-                <img src="assets/anticuchos selectos.jpg" alt="Anticuchos">
+                <img loading="lazy" decoding="async" src="assets/anticuchos selectos.jpg" alt="Anticuchos">
             </div>
             <div class="slide-content">
                 <span class="slide-category">05 / Grill</span>
-                <h1 class="slide-title">Anticuchos<span>Selectos</span></h1>
+                <h2 class="slide-title">Anticuchos<span>Selectos</span></h2>
                 <p class="slide-description">Tres palitos de corazón de res seleccionados, macerados en ají panca y especias ancestrales. Servidos con papas doradas y choclo tierno.</p>
                 <div class="slide-price">S/ 32.00</div>
             </div>
@@ -101,13 +103,13 @@
         <section class="menu-slide" id="bife">
             <div class="slide-content">
                 <span class="slide-category">06 / Grill</span>
-                <h1 class="slide-title">Bife<span>Chorizo</span></h1>
+                <h2 class="slide-title">Bife<span>Chorizo</span></h2>
                 <p class="slide-description">Corte premium de 350g, asado a término de su elección. Una explosión de sabor y suavidad con el toque ahumado de nuestra brasa.</p>
                 <div class="dish-tag">✦ Maridaje sugerido: Copa de Malbec Reserva</div>
                 <div class="slide-price">S/ 65.00</div>
             </div>
             <div class="slide-image">
-                <img src="assets/bife chorizo.jpg" alt="Bife de Chorizo">
+                <img loading="lazy" decoding="async" src="assets/bife chorizo.jpg" alt="Bife de Chorizo">
             </div>
         </section>
 
@@ -115,11 +117,11 @@
         <!-- Slide 7: Papas Artesanas -->
         <section class="menu-slide" id="papas">
             <div class="slide-image">
-                <img src="assets/papas fritas grandes.jpg" alt="Papas Fritas Grandes">
+                <img loading="lazy" decoding="async" src="assets/papas fritas grandes.jpg" alt="Papas Fritas Grandes">
             </div>
             <div class="slide-content">
                 <span class="slide-category">07 / Sides</span>
-                <h1 class="slide-title">Papas<span>Artesanas</span></h1>
+                <h2 class="slide-title">Papas<span>Artesanas</span></h2>
                 <p class="slide-description">Papas amarillas seleccionadas, cortadas a mano cada mañana y fritas en dos tiempos para lograr ese exterior crujiente y corazón suave.</p>
                 <div class="slide-price">S/ 15.00</div>
             </div>
@@ -129,23 +131,23 @@
         <section class="menu-slide" id="ensalada">
             <div class="slide-content">
                 <span class="slide-category">08 / Sides</span>
-                <h1 class="slide-title">Ensalada<span>Brasa</span></h1>
+                <h2 class="slide-title">Ensalada<span>Brasa</span></h2>
                 <p class="slide-description">Mix de lechugas orgánicas, palta madura, tomate cherry, hilos de zanahoria y nuestro aliño secreto de la casa. Frescura pura.</p>
                 <div class="slide-price">S/ 18.00</div>
             </div>
             <div class="slide-image">
-                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=90" alt="Ensalada">
+                <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=90" alt="Ensalada">
             </div>
         </section>
 
         <!-- Slide 9: Arroz con Choclo -->
         <section class="menu-slide" id="arroz">
             <div class="slide-image">
-                <img src="assets/arroz choclo.png" alt="Arroz con Choclo">
+                <img loading="lazy" decoding="async" src="assets/arroz choclo.png" alt="Arroz con Choclo">
             </div>
             <div class="slide-content">
                 <span class="slide-category">09 / Sides</span>
-                <h1 class="slide-title">Arroz<span>Choclo</span></h1>
+                <h2 class="slide-title">Arroz<span>Choclo</span></h2>
                 <p class="slide-description">Arroz graneado con granos de choclo tierno y un toque de mantequilla artesanal. El acompañante clásico y reconfortante.</p>
                 <div class="slide-price">S/ 12.00</div>
             </div>
@@ -156,23 +158,23 @@
         <section class="menu-slide" id="incagold">
             <div class="slide-content">
                 <span class="slide-category">10 / Drinks</span>
-                <h1 class="slide-title">Inca<span>Gold</span></h1>
+                <h2 class="slide-title">Inca<span>Gold</span></h2>
                 <p class="slide-description">El acompañante indiscutible. La bebida dorada que realza cada sabor de nuestra brasa. Fría, burbujeante, esencial.</p>
                 <div class="slide-price">S/ 10.00</div>
             </div>
             <div class="slide-image">
-                <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=90" alt="Inca Gold">
+                <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=90" alt="Inca Gold">
             </div>
         </section>
 
         <!-- Slide 11: Chicha Morada -->
         <section class="menu-slide" id="chicha">
             <div class="slide-image">
-                <img src="assets/chicha morada.jpg" alt="Chicha Morada">
+                <img loading="lazy" decoding="async" src="assets/chicha morada.jpg" alt="Chicha Morada">
             </div>
             <div class="slide-content">
                 <span class="slide-category">11 / Drinks</span>
-                <h1 class="slide-title">Chicha<span>Morada</span></h1>
+                <h2 class="slide-title">Chicha<span>Morada</span></h2>
                 <p class="slide-description">Elaborada artesanalmente con maíz morado, piña, membrillo y especias. El sabor de la tradición peruana en cada sorbo.</p>
                 <div class="slide-price">S/ 12.00</div>
             </div>
@@ -182,89 +184,34 @@
         <section class="menu-slide" id="limonada">
             <div class="slide-content">
                 <span class="slide-category">12 / Drinks</span>
-                <h1 class="slide-title">Limonada<span>Frozen</span></h1>
+                <h2 class="slide-title">Limonada<span>Frozen</span></h2>
                 <p class="slide-description">Refrescante mezcla de limones seleccionados, granizada a la perfección con un toque de hierbabuena fresca. Ideal para el verano.</p>
                 <div class="slide-price">S/ 14.00</div>
             </div>
             <div class="slide-image">
-                <img src="assets/Limonada frozen.jpg" alt="Limonada Frozen">
+                <img loading="lazy" decoding="async" src="assets/Limonada frozen.jpg" alt="Limonada Frozen">
+            </div>
+        </section>
+        <!-- Slide final: llamada a reservar -->
+        <section class="menu-slide cta-slide" id="reservar">
+            <div class="cta-content">
+                <span class="slide-category">Tu mesa te espera</span>
+                <h2 class="slide-title">¿Se te antojó?<span>Reserva hoy</span></h2>
+                <p class="slide-description">Elige tu horario en segundos y llega directo a disfrutar. Te guardamos la mesa con 15 minutos de tolerancia.</p>
+                <div class="cta-actions">
+                    <a href="index.html#reservas" class="cta-btn">Reservar Mesa</a>
+                    <button type="button" class="cta-link" id="back-to-top">Volver al inicio de la carta ↑</button>
+                </div>
             </div>
         </section>
     </div>
 
-    <!-- Navigation dots -->
-    <div class="magazine-nav">
-        <div class="dot active"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-    </div>
+    <!-- Navigation dots (se generan desde JS según los platos) -->
+    <nav class="magazine-nav" aria-label="Platos"></nav>
 
-    <script>
-        const slides = document.querySelectorAll('.menu-slide');
-        const dots = document.querySelectorAll('.dot');
-        const catPills = document.querySelectorAll('.cat-pill');
-        const container = document.querySelector('.magazine-container');
+    <!-- Botón flotante de reserva en móvil -->
+    <a href="index.html#reservas" class="floating-reserve">Reservar Mesa</a>
 
-        // Map categories to slide ranges
-        // 0-2: Brasas (pollo-entero, medio-pollo, cuarto-pollo)
-        // 3-5: Grill (parrilla, anticuchos, bife)
-        // 6-8: Sides (papas, ensalada, arroz)
-        // 9-11: Drinks (incagold, chicha, limonada)
-        function updateActiveCategory(slideIndex) {
-            let activeTarget = 'pollo-entero';
-            if (slideIndex >= 9) {
-                activeTarget = 'incagold';
-            } else if (slideIndex >= 6) {
-                activeTarget = 'papas';
-            } else if (slideIndex >= 3) {
-                activeTarget = 'parrilla';
-            }
-
-            catPills.forEach(pill => {
-                pill.classList.toggle('active', pill.getAttribute('data-target') === activeTarget);
-            });
-        }
-
-        // Scroll listener for dots and category pills
-        container.addEventListener('scroll', () => {
-            const index = Math.round(container.scrollTop / window.innerHeight);
-            dots.forEach((dot, i) => {
-                if (dots[i]) {
-                    dot.classList.toggle('active', i === index);
-                }
-            });
-            updateActiveCategory(index);
-        });
-
-        // Click on dots to scroll to slide
-        dots.forEach((dot, i) => {
-            dot.addEventListener('click', () => {
-                container.scrollTo({
-                    top: i * window.innerHeight,
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Click on category pill to jump directly to category section
-        catPills.forEach(pill => {
-            pill.addEventListener('click', () => {
-                const targetId = pill.getAttribute('data-target');
-                const targetSlide = document.getElementById(targetId);
-                if (targetSlide) {
-                    targetSlide.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-    </script>
+    <script src="js/menu.js"></script>
 </body>
 </html>

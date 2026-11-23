@@ -293,3 +293,305 @@ body {
         right: 15px;
     }
 }
+/* ==========================================================================
+   Pulido
+   ========================================================================== */
+
+/* Altura real en móviles (la barra del navegador no corta el contenido) */
+.magazine-container,
+.menu-slide {
+    height: 100vh;
+    height: 100dvh;
+}
+
+/* Accesibilidad: saltar a la carta */
+.skip-link {
+    position: fixed;
+    top: -60px;
+    left: 20px;
+    z-index: 200;
+    background: var(--primary-color);
+    color: #0a0a0a;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 12px;
+}
+
+.cat-pill:focus-visible,
+.dot:focus-visible,
+.cta-btn:focus-visible,
+.cta-link:focus-visible,
+.back-link:focus-visible,
+.menu-reserve-btn:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+}
+
+.menu-reserve-btn {
+    text-decoration: none;
+}
+
+/* Dots como botones con etiqueta del plato al pasar el mouse */
+.dot {
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+}
+
+.dot::before {
+    /* área de click más grande sin cambiar el diseño */
+    content: '';
+    position: absolute;
+    inset: -8px;
+}
+
+.dot::after {
+    content: attr(data-label);
+    position: absolute;
+    right: 22px;
+    top: 50%;
+    transform: translate(6px, -50%);
+    white-space: nowrap;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--light-color);
+    background: rgba(10, 10, 10, 0.85);
+    padding: 4px 10px;
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.dot:hover::after,
+.dot:focus-visible::after {
+    opacity: 1;
+    transform: translate(0, -50%);
+}
+
+.dot.active::after {
+    font-size: 0.47rem; /* compensa el scale(1.5) del dot activo */
+}
+
+/* Aparición suave del texto de cada plato */
+.js .slide-content > *,
+.js .cta-content > * {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.menu-slide.in-view .slide-content > *,
+.menu-slide.in-view .cta-content > * {
+    opacity: 1;
+    transform: none;
+}
+
+.menu-slide.in-view .slide-content > :nth-child(2),
+.menu-slide.in-view .cta-content > :nth-child(2) { transition-delay: 0.08s; }
+.menu-slide.in-view .slide-content > :nth-child(3),
+.menu-slide.in-view .cta-content > :nth-child(3) { transition-delay: 0.16s; }
+.menu-slide.in-view .slide-content > :nth-child(4),
+.menu-slide.in-view .cta-content > :nth-child(4) { transition-delay: 0.24s; }
+.menu-slide.in-view .slide-content > :nth-child(5) { transition-delay: 0.32s; }
+
+.slide-price {
+    color: var(--primary-color);
+    margin-top: 10px;
+}
+
+.dish-tag {
+    align-self: flex-start;
+    margin-bottom: 25px;
+}
+
+/* Imagen que no cargó */
+.slide-image.img-fallback {
+    background: radial-gradient(circle at 50% 40%, #2a1d0e 0%, #0a0a0a 75%);
+}
+
+.slide-image.img-fallback img {
+    display: none;
+}
+
+/* Slide final de reserva */
+.cta-slide {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle at 50% 30%, rgba(243, 156, 18, 0.18) 0%, var(--dark-color) 65%);
+}
+
+.cta-content {
+    max-width: 640px;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cta-slide .slide-title {
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+}
+
+.cta-content .slide-description {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 16px 42px;
+    border-radius: 50px;
+    background: var(--primary-color);
+    color: #0a0a0a;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(243, 156, 18, 0.35);
+}
+
+.cta-link {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+.cta-link:hover {
+    color: var(--light-color);
+}
+
+/* Botón flotante de reserva (solo móvil, donde el del header se oculta) */
+.floating-reserve {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .floating-reserve {
+        display: block;
+        position: fixed;
+        left: 50%;
+        bottom: 20px;
+        transform: translateX(-50%);
+        z-index: 110;
+        padding: 12px 28px;
+        border-radius: 50px;
+        background: var(--primary-color);
+        color: #0a0a0a;
+        font-weight: 800;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        text-decoration: none;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        white-space: nowrap;
+    }
+
+    /* Pills con scroll horizontal si no entran */
+    .category-nav {
+        overflow-x: auto;
+        scrollbar-width: none;
+        max-width: calc(100vw - 110px);
+    }
+
+    .category-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .cat-pill {
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .dot::after {
+        display: none;
+    }
+
+    .slide-content {
+        padding-bottom: 70px; /* espacio para el botón flotante */
+    }
+}
+
+@media (max-width: 992px) {
+    .slide-image {
+        height: 42%;
+        flex: none;
+    }
+
+    /* En móvil, siempre imagen arriba y texto abajo (el texto no queda bajo el header) */
+    .menu-slide:nth-child(even) {
+        flex-direction: column-reverse;
+    }
+
+    .slide-content {
+        height: auto;
+        flex: 1;
+        padding-top: 30px;
+    }
+
+    .slide-description {
+        margin-bottom: 20px;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .slide-title {
+        margin-bottom: 18px;
+    }
+
+    .cta-slide .cta-content {
+        padding-top: 40px;
+    }
+}
+
+@media (max-height: 800px) and (max-width: 768px) {
+    .slide-description {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .dish-tag {
+        display: none;
+    }
+}
+
+/* Respeta a quien prefiere menos animación */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .slide-content > *, .cta-content > * {
+        opacity: 1;
+        transform: none;
+    }
+}

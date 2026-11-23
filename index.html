@@ -16,16 +16,17 @@
     <!-- Barra de Navegación -->
     <header class="header">
         <div class="container">
-            <a href="#" class="logo">Sabor<span>Brasa</span></a>
+            <a href="#inicio" class="logo">Sabor<span>Brasa</span></a>
             <nav class="nav">
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#nosotros">Nosotros</a></li>
                     <li><a href="menu.html">Menú</a></li>
+                    <li><a href="#mi-reserva">Mi Reserva</a></li>
                     <li><a href="#reservas" class="btn-primary">Reservar</a></li>
                 </ul>
             </nav>
-            <button class="menu-toggle" aria-label="Abrir menú">
+            <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -51,7 +52,7 @@
         <section id="nosotros" class="about section">
             <div class="container grid">
                 <div class="about-image">
-                    <img src="assets/food image.png" alt="Nuestra Esencia - Sabor a Brasa" class="img-about">
+                    <img src="assets/food image.png" alt="Nuestra Esencia - Sabor a Brasa" class="img-about" loading="lazy">
                 </div>
                 <div class="about-text">
                     <h2 class="section-title">Nuestra Esencia</h2>
@@ -70,7 +71,7 @@
                 <div class="menu-grid">
                     <article class="menu-item preview" data-category="pollos">
                         <div class="item-img">
-                            <img src="assets/pollo a la brasa entero.jpg" alt="Pollo a la Brasa Entero">
+                            <img src="assets/pollo a la brasa entero.jpg" alt="Pollo a la Brasa Entero" loading="lazy">
                         </div>
                         <div class="item-content">
                             <div class="item-info">
@@ -81,7 +82,7 @@
                     </article>
                     <article class="menu-item preview" data-category="parrillas">
                         <div class="item-img">
-                            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Parrilla Especial">
+                            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Parrilla Especial" loading="lazy">
                         </div>
                         <div class="item-content">
                             <div class="item-info">
@@ -92,7 +93,7 @@
                     </article>
                     <article class="menu-item preview" data-category="guarniciones">
                         <div class="item-img">
-                            <img src="assets/papas fritas grandes.jpg" alt="Papas Fritas Grandes">
+                            <img src="assets/papas fritas grandes.jpg" alt="Papas Fritas Grandes" loading="lazy">
                         </div>
                         <div class="item-content">
                             <div class="item-info">
@@ -103,7 +104,7 @@
                     </article>
                     <article class="menu-item preview" data-category="bebidas">
                         <div class="item-img">
-                            <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Bebidas">
+                            <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Bebidas" loading="lazy">
                         </div>
                         <div class="item-content">
                             <div class="item-info">
@@ -124,107 +125,179 @@
         <section id="reservas" class="reservations section">
             <div class="container narrow">
                 <h2 class="section-title text-center">Reserva tu Experiencia</h2>
-                <p class="text-center">Asegura tu mesa en segundos y disfruta sin esperas.</p>
-                <form id="reservation-form" class="form">
-                    <div class="form-group">
-                        <label for="name">Nombre Completo</label>
-                        <input type="text" id="name" name="name" placeholder="Ej. Juan Pérez" required>
-                    </div>
-                    <div class="form-row">
+                <p class="text-center mb-40">Elige día, zona y horario: te mostramos en tiempo real qué mesas siguen libres.</p>
+
+                <form id="reservation-form" class="form" novalidate>
+                    <fieldset class="form-block">
+                        <legend>Tus datos</legend>
+                        <div class="form-group">
+                            <label for="name">Nombre Completo</label>
+                            <input type="text" id="name" name="name" placeholder="Ej. Juan Pérez" autocomplete="name" required>
+                            <small class="field-error" data-error-for="name"></small>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Celular / WhatsApp</label>
+                                <input type="tel" id="phone" name="phone" placeholder="987 654 321" autocomplete="tel" inputmode="tel" required>
+                                <small class="field-error" data-error-for="phone"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Correo <span class="optional">(opcional)</span></label>
+                                <input type="email" id="email" name="email" placeholder="tucorreo@email.com" autocomplete="email">
+                                <small class="field-error" data-error-for="email"></small>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-block">
+                        <legend>Tu mesa</legend>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="guests">Número de Personas</label>
+                                <select id="guests" name="guests" required>
+                                    <option value="" disabled selected>Selecciona...</option>
+                                </select>
+                                <small class="field-error" data-error-for="guests"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="zone">Zona de Preferencia</label>
+                                <select id="zone" name="zone" required></select>
+                                <small class="field-hint" id="zone-hint"></small>
+                                <small class="field-error" data-error-for="zone"></small>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label for="date">Fecha</label>
                             <input type="date" id="date" name="date" required>
+                            <small class="field-error" data-error-for="date"></small>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="form-block">
+                        <legend>Horario</legend>
+                        <input type="hidden" id="time" name="time">
+                        <div id="slot-grid" class="slot-grid" role="radiogroup" aria-label="Horarios disponibles">
+                            <p class="slot-empty">Selecciona personas, zona y fecha para ver los horarios disponibles.</p>
+                        </div>
+                        <div class="slot-legend">
+                            <span><i class="lg lg-free"></i>Disponible</span>
+                            <span><i class="lg lg-few"></i>Últimas mesas</span>
+                            <span><i class="lg lg-full"></i>Lleno</span>
+                        </div>
+                        <small class="field-error" data-error-for="time"></small>
+                    </fieldset>
+
+                    <fieldset class="form-block">
+                        <legend>Detalles</legend>
+                        <div class="form-group">
+                            <label for="occasion">Motivo de la Visita <span class="optional">(opcional)</span></label>
+                            <select id="occasion" name="occasion">
+                                <option value="Cena Casual" selected>Cena Casual / Degustación</option>
+                                <option value="Aniversario">Aniversario / Velada Romántica</option>
+                                <option value="Cumpleaños">Celebración de Cumpleaños</option>
+                                <option value="Reunión de Negocios">Reunión de Negocios</option>
+                                <option value="Reunión Familiar">Reunión Familiar</option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="time">Hora</label>
-                            <input type="time" id="time" name="time" required>
+                            <label for="message">Petición Especial o Alergias <span class="optional">(opcional)</span></label>
+                            <textarea id="message" name="message" rows="3" maxlength="300" placeholder="Indícanos alguna restricción alimentaria, silla para bebé, decoración..."></textarea>
                         </div>
-                    </div>
+                        <label class="checkbox">
+                            <input type="checkbox" id="policy" name="policy" required>
+                            <span>Acepto la tolerancia de <strong>15 minutos</strong>; pasado ese tiempo la mesa puede liberarse.</span>
+                        </label>
+                        <small class="field-error" data-error-for="policy"></small>
+                    </fieldset>
+
+                    <p class="form-general-error" id="form-general-error" role="alert"></p>
+                    <button type="submit" class="btn-primary full-width">Confirmar Reserva</button>
+                    <p class="form-footnote">¿Grupo de más de 12 personas o evento privado? <a href="#" id="big-group-link">Escríbenos por WhatsApp</a>.</p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Sección Mi Reserva -->
+        <section id="mi-reserva" class="manage section bg-light">
+            <div class="container narrow">
+                <h2 class="section-title text-center">Gestiona tu Reserva</h2>
+                <p class="text-center mb-40">Consulta, cambia el horario o cancela con tu código de reserva y tu celular.</p>
+
+                <form id="lookup-form" class="form lookup-form" novalidate>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="guests">Número de Personas</label>
-                            <select id="guests" name="guests" required>
-                                <option value="" disabled selected>Selecciona...</option>
-                                <option value="1">1 Persona</option>
-                                <option value="2">2 Personas</option>
-                                <option value="3">3 Personas</option>
-                                <option value="4">4 Personas</option>
-                                <option value="5">5 Personas</option>
-                                <option value="6">6+ Personas (Mesa Especial)</option>
-                            </select>
+                            <label for="lookup-code">Código de Reserva</label>
+                            <input type="text" id="lookup-code" name="code" placeholder="SB-XXXXX" autocomplete="off" required>
                         </div>
                         <div class="form-group">
-                            <label for="zone">Zona de Preferencia</label>
-                            <select id="zone" name="zone">
-                                <option value="Salón Principal" selected>Salón Principal (Atenuado)</option>
-                                <option value="Terraza Exclusiva">Terraza Exclusiva</option>
-                                <option value="Barra & Lounge">Barra & Lounge</option>
-                                <option value="Área Privada">Espacio Privado VIP</option>
-                            </select>
+                            <label for="lookup-phone">Celular registrado</label>
+                            <input type="tel" id="lookup-phone" name="phone" placeholder="987 654 321" inputmode="tel" required>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="occasion">Motivo de la Visita (Opcional)</label>
-                        <select id="occasion" name="occasion">
-                            <option value="Cena Casual" selected>Cena Casual / Degustación</option>
-                            <option value="Aniversario">Aniversario / Velada Romántica</option>
-                            <option value="Cumpleaños">Celebración de Cumpleaños</option>
-                            <option value="Reunión de Negocios">Reunión de Negocios</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Petición Especial o Alergias</label>
-                        <textarea id="message" name="message" rows="3" placeholder="Indícanos alguna restricción alimentaria o requerimiento específico..."></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary full-width">Confirmar Reserva</button>
+                    <p class="form-general-error" id="lookup-error" role="alert"></p>
+                    <button type="submit" class="btn-primary full-width">Buscar Reserva</button>
                 </form>
+
+                <div id="lookup-result" class="lookup-result" hidden></div>
             </div>
         </section>
     </main>
 
     <!-- Modal de Confirmación de Reserva VIP -->
-    <div id="reservation-modal" class="modal-overlay" aria-hidden="true">
+    <div id="reservation-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal-card">
             <button class="modal-close" id="modal-close-btn" aria-label="Cerrar ventana">&times;</button>
-            <div class="modal-badge">Sabor a Brasa &bull; Reservación Confirmada</div>
-            <h3 class="modal-title">Tu Mesa está <span>Asegurada</span></h3>
-            <p class="modal-subtitle">Hemos preparado todo para brindarte una experiencia gastronómica inolvidable.</p>
+            <div class="modal-badge">Sabor a Brasa &bull; Solicitud Registrada</div>
+            <h3 class="modal-title" id="modal-title">Tu Mesa está <span>Apartada</span></h3>
+            <p class="modal-subtitle">Guarda tu código: lo necesitas para consultar, cambiar o cancelar tu reserva.</p>
+
+            <div class="reservation-code">
+                <span class="summary-label">Código de Reserva</span>
+                <strong id="summary-code">SB-XXXXX</strong>
+                <button type="button" class="copy-btn" id="copy-code-btn">Copiar</button>
+            </div>
 
             <div class="reservation-summary">
                 <div class="summary-item">
                     <span class="summary-label">Titular</span>
-                    <span class="summary-value" id="summary-name">Juan Pérez</span>
+                    <span class="summary-value" id="summary-name"></span>
                 </div>
                 <div class="summary-item">
                     <span class="summary-label">Experiencia</span>
-                    <span class="summary-value" id="summary-guests">Mesa para 4 Personas</span>
+                    <span class="summary-value" id="summary-guests"></span>
                 </div>
                 <div class="summary-item">
                     <span class="summary-label">Fecha y Hora</span>
-                    <span class="summary-value" id="summary-datetime">Viernes 15 Oct &bull; 8:30 PM</span>
+                    <span class="summary-value" id="summary-datetime"></span>
                 </div>
                 <div class="summary-item">
                     <span class="summary-label">Zona & Ocasión</span>
-                    <span class="summary-value" id="summary-zone-occasion">Salón Principal &bull; Cena Casual</span>
+                    <span class="summary-value" id="summary-zone-occasion"></span>
                 </div>
                 <div class="summary-item full" id="summary-notes-container">
                     <span class="summary-label">Nota Especial</span>
-                    <span class="summary-value" id="summary-notes">Ninguna</span>
+                    <span class="summary-value" id="summary-notes"></span>
                 </div>
             </div>
 
             <div class="modal-notice">
-                <p>Te esperamos con 15 minutos de tolerancia para garantizar la frescura de nuestra brasa.</p>
+                <p>Te esperamos con 15 minutos de tolerancia para garantizar la frescura de nuestra brasa. Envía la reserva por WhatsApp para que la hostess la confirme.</p>
             </div>
 
             <div class="modal-actions">
-                <button type="button" class="btn-primary" id="modal-accept-btn">Entendido</button>
                 <a href="#" id="modal-whatsapp-btn" target="_blank" rel="noopener noreferrer" class="btn-secondary-modal">
-                    Notificar a la Hostess por WhatsApp
+                    Confirmar con la Hostess por WhatsApp
                 </a>
+                <div class="modal-actions-row">
+                    <button type="button" class="btn-ghost" id="modal-ics-btn">Agregar a mi calendario</button>
+                    <button type="button" class="btn-primary" id="modal-accept-btn">Entendido</button>
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -241,6 +314,7 @@
             <div class="footer-hours">
                 <h4>Horario</h4>
                 <p>Lunes - Domingo: 12:00 PM - 11:00 PM</p>
+                <p class="footer-small">Último turno de reserva: 9:30 PM</p>
             </div>
             <div class="footer-social">
                 <h4>Síguenos</h4>
@@ -252,10 +326,11 @@
             </div>
         </div>
         <div class="footer-bottom text-center">
-            <p>&copy; 2026 Sabor a Brasa. Todos los derechos reservados.</p>
+            <p>&copy; 2026 Sabor a Brasa. Todos los derechos reservados. &middot; <a href="admin.html" class="staff-link">Acceso personal</a></p>
         </div>
     </footer>
 
+    <script src="js/reservas-store.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>

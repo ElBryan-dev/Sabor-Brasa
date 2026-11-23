@@ -1,0 +1,544 @@
+[hidden] { display: none !important; }
+
+/* ==========================================================================
+   Sabor a Brasa - Panel de reservas
+   ========================================================================== */
+.admin-body {
+    background: #f3f1ee;
+    min-height: 100vh;
+}
+
+/* Login */
+.login-screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: radial-gradient(circle at 30% 20%, #2a2016 0%, #0a0a0a 70%);
+}
+
+.login-card {
+    width: 100%;
+    max-width: 380px;
+    background: #141414;
+    border: 1px solid rgba(243, 156, 18, 0.3);
+    border-radius: 18px;
+    padding: 40px 32px;
+    color: #fff;
+    text-align: center;
+}
+
+.login-card .logo {
+    color: #fff;
+}
+
+.login-sub {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.85rem;
+    margin: 6px 0 28px;
+}
+
+.login-card label {
+    text-align: left;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.login-card input {
+    background: #1d1d1d;
+    border-color: #333;
+    color: #fff;
+    text-align: center;
+    font-size: 1.4rem;
+    letter-spacing: 8px;
+    margin-bottom: 16px;
+}
+
+.login-note {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.45);
+    margin-top: 18px;
+}
+
+/* Header */
+.admin-header {
+    background: var(--dark-color);
+    color: #fff;
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.admin-header .logo {
+    font-size: 1.4rem;
+}
+
+.admin-tag {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--primary-color);
+    border: 1px solid rgba(243, 156, 18, 0.4);
+    border-radius: 50px;
+    padding: 4px 10px;
+}
+
+.admin-header-actions {
+    margin-left: auto;
+    display: flex;
+    gap: 18px;
+}
+
+.admin-link {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.admin-link:hover {
+    color: var(--primary-color);
+}
+
+.admin-main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 26px 24px 60px;
+}
+
+/* Toolbar */
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.view-switch {
+    display: inline-flex;
+    background: #fff;
+    border-radius: 50px;
+    padding: 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.view-btn {
+    border: none;
+    background: transparent;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    cursor: pointer;
+}
+
+.view-btn.active {
+    background: var(--dark-color);
+    color: var(--primary-color);
+}
+
+.date-nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.date-nav input {
+    width: auto;
+    padding: 8px 12px;
+    background: #fff;
+}
+
+.icon-btn, .chip-btn {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.icon-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 1.3rem;
+    line-height: 1;
+}
+
+.chip-btn {
+    padding: 9px 14px;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.icon-btn:hover, .chip-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.toolbar-right {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+}
+
+.toolbar-right .btn-primary, .toolbar-right .btn-outline {
+    padding: 10px 20px;
+    font-size: 0.8rem;
+}
+
+.admin-title {
+    font-size: 1.6rem;
+    color: var(--dark-color);
+    margin-bottom: 18px;
+}
+
+/* KPIs */
+.kpis {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.kpi {
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px 20px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    border-left: 4px solid var(--primary-color);
+}
+
+.kpi-warn {
+    border-left-color: var(--accent-color);
+}
+
+.kpi-label {
+    display: block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #999;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.kpi strong {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.9rem;
+    color: var(--dark-color);
+}
+
+/* Panels */
+.panel {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    padding: 22px;
+    margin-bottom: 22px;
+}
+
+.panel-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.panel-head h2 {
+    font-size: 1.1rem;
+    color: var(--dark-color);
+}
+
+.panel-sub {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.filters input, .filters select {
+    width: auto;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+}
+
+.filters input {
+    min-width: 240px;
+}
+
+/* Ocupación */
+.occupancy-wrap {
+    overflow-x: auto;
+}
+
+.occupancy {
+    border-collapse: separate;
+    border-spacing: 3px;
+    font-size: 0.75rem;
+    width: 100%;
+}
+
+.occupancy th {
+    font-weight: 600;
+    color: #999;
+    white-space: nowrap;
+    padding: 4px;
+}
+
+.occupancy tbody th {
+    text-align: left;
+    color: var(--dark-color);
+    padding-right: 12px;
+}
+
+.occupancy tbody th small {
+    display: block;
+    color: #aaa;
+    font-weight: 400;
+}
+
+.occ {
+    min-width: 40px;
+    height: 36px;
+    text-align: center;
+    border-radius: 6px;
+    font-weight: 700;
+}
+
+.occ-0 { background: #f5f4f2; }
+.occ-1 { background: #fdebc8; color: #9a6a0b; }
+.occ-2 { background: #f5b041; color: #5c3b00; }
+.occ-3 { background: var(--accent-color); color: #fff; }
+
+/* Tabla de reservas */
+.table-wrap {
+    overflow-x: auto;
+}
+
+.res-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+}
+
+.res-table th {
+    text-align: left;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+    font-weight: 600;
+    padding: 10px 12px;
+    border-bottom: 2px solid #eee;
+}
+
+.res-table td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: top;
+}
+
+.res-table td span {
+    display: block;
+}
+
+.res-table .muted {
+    color: #888;
+    font-size: 0.8rem;
+}
+
+.res-table .code {
+    font-family: monospace;
+    font-size: 0.78rem;
+    color: var(--secondary-color);
+    letter-spacing: 1px;
+}
+
+.res-table .note {
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    font-style: italic;
+    margin-top: 4px;
+}
+
+.res-table .source {
+    font-size: 0.7rem;
+    color: #999;
+    margin-top: 2px;
+}
+
+.row-cancelada td, .row-noshow td, .row-completada td {
+    opacity: 0.55;
+}
+
+.td-actions {
+    min-width: 260px;
+}
+
+.row-btn {
+    display: inline-block;
+    margin: 0 4px 6px 0;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: #fff;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.row-btn:hover { border-color: var(--dark-color); }
+.row-btn.ok { border-color: #27ae60; color: #1e8449; }
+.row-btn.ok:hover { background: #27ae60; color: #fff; }
+.row-btn.info { border-color: #2e86de; color: #1f5fbf; }
+.row-btn.info:hover { background: #2e86de; color: #fff; }
+.row-btn.warn { border-color: #e67e22; color: #b9770e; }
+.row-btn.warn:hover { background: #e67e22; color: #fff; }
+.row-btn.danger { color: var(--accent-color); border-color: transparent; }
+.row-btn.danger:hover { background: var(--accent-color); color: #fff; }
+
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #999;
+}
+
+.empty-state p {
+    margin-bottom: 16px;
+}
+
+.admin-disclaimer {
+    font-size: 0.8rem;
+    color: #999;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+/* Modal editar (tema claro) */
+.admin-modal .modal-card.light {
+    background: #fff;
+    color: var(--text-color);
+    border: none;
+    max-width: 640px;
+}
+
+.admin-modal .modal-close {
+    color: #999;
+}
+
+.edit-title {
+    font-size: 1.3rem;
+    color: var(--dark-color);
+    margin-bottom: 20px;
+}
+
+.edit-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.history {
+    margin-top: 22px;
+    border-top: 1px solid #eee;
+    padding-top: 16px;
+    font-size: 0.82rem;
+}
+
+.history h4 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+    margin-bottom: 8px;
+}
+
+.history li {
+    padding: 4px 0;
+    color: var(--text-light);
+}
+
+.history li span {
+    color: #aaa;
+    margin-right: 6px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .kpis {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .toolbar-right {
+        margin-left: 0;
+        width: 100%;
+    }
+    .toolbar-right > * {
+        flex: 1;
+    }
+}
+
+@media (max-width: 720px) {
+    .admin-header {
+        padding: 12px 16px;
+    }
+    .admin-tag {
+        display: none;
+    }
+    .admin-main {
+        padding: 18px 16px 50px;
+    }
+    .filters, .filters input, .filters select {
+        width: 100%;
+        min-width: 0;
+    }
+    /* Tabla -> tarjetas */
+    .res-table thead {
+        display: none;
+    }
+    .res-table, .res-table tbody, .res-table tr, .res-table td {
+        display: block;
+        width: 100%;
+    }
+    .res-table tr {
+        border: 1px solid #eee;
+        border-radius: 12px;
+        padding: 10px 14px;
+        margin-bottom: 12px;
+    }
+    .res-table td {
+        border: none;
+        padding: 6px 0;
+    }
+    .res-table td[data-label]::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #aaa;
+        margin-bottom: 2px;
+    }
+    .td-actions {
+        min-width: 0;
+        padding-top: 10px !important;
+    }
+}
