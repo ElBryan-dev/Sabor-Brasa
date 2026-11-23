@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabor a Brasa | El mejor Pollo a la Brasa Moderno</title>
+    <meta name="description" content="Disfruta del auténtico pollo a la brasa en un ambiente moderno y elegante. Reserva tu mesa hoy mismo.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Barra de Navegación -->
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">Sabor<span>Brasa</span></a>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="menu.html">Menú</a></li>
+                    <li><a href="#reservas" class="btn-primary">Reservar</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Sección Hero -->
+        <section id="inicio" class="hero">
+            <div class="hero-content container">
+                <h1>Tradición que se siente, <span>Sabor que trasciende.</span></h1>
+                <p>El pollo a la brasa más jugoso, preparado con técnicas modernas y la pasión de siempre.</p>
+                <div class="hero-actions">
+                    <a href="menu.html" class="btn-secondary">Ver Menú</a>
+                    <a href="#reservas" class="btn-primary">Reservar Mesa</a>
+                </div>
+            </div>
+            <div class="hero-overlay"></div>
+        </section>
+
+        <!-- Sección Nosotros -->
+        <section id="nosotros" class="about section">
+            <div class="container grid">
+                <div class="about-image">
+                    <img src="assets/food image.png" alt="Nuestra Esencia - Sabor a Brasa" class="img-about">
+                </div>
+                <div class="about-text">
+                    <h2 class="section-title">Nuestra Esencia</h2>
+                    <p>En <strong>Sabor a Brasa</strong>, elevamos la experiencia del pollo a la brasa a un nuevo nivel. Seleccionamos cuidadosamente cada ingrediente para garantizar un sabor inigualable y una textura perfecta.</p>
+                    <p>Nuestra misión es combinar la calidez de la tradición con un entorno sofisticado, ideal para momentos especiales en familia o con amigos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Menú -->
+        <section id="menu" class="menu section bg-light">
+            <div class="container">
+                <h2 class="section-title text-center">Nuestra Propuesta</h2>
+                <p class="text-center mb-40">Descubre una selección de nuestros platos más emblemáticos, preparados con maestría y pasión.</p>
+
+                <div class="menu-grid">
+                    <article class="menu-item preview" data-category="pollos">
+                        <div class="item-img">
+                            <img src="assets/pollo a la brasa entero.jpg" alt="Pollo a la Brasa Entero">
+                        </div>
+                        <div class="item-content">
+                            <div class="item-info">
+                                <h3>Pollo a la Brasa</h3>
+                                <p>La especialidad que nos define, dorada y jugosa.</p>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="menu-item preview" data-category="parrillas">
+                        <div class="item-img">
+                            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Parrilla Especial">
+                        </div>
+                        <div class="item-content">
+                            <div class="item-info">
+                                <h3>Cortes a la Parrilla</h3>
+                                <p>Selección premium de carnes al carbón.</p>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="menu-item preview" data-category="guarniciones">
+                        <div class="item-img">
+                            <img src="assets/papas fritas grandes.jpg" alt="Papas Fritas Grandes">
+                        </div>
+                        <div class="item-content">
+                            <div class="item-info">
+                                <h3>Acompañamientos</h3>
+                                <p>El complemento perfecto para cada bocado.</p>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="menu-item preview" data-category="bebidas">
+                        <div class="item-img">
+                            <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Bebidas">
+                        </div>
+                        <div class="item-content">
+                            <div class="item-info">
+                                <h3>Bebidas</h3>
+                                <p>Refrescantes opciones para acompañar tu Brasa.</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="text-center mt-50">
+                    <p class="mb-20">¿Buscas algo más? Explora nuestra carta completa y déjate sorprender.</p>
+                    <a href="menu.html" class="btn-primary">VER MENÚ</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Reservas -->
+        <section id="reservas" class="reservations section">
+            <div class="container narrow">
+                <h2 class="section-title text-center">Reserva tu Experiencia</h2>
+                <p class="text-center">Asegura tu mesa en segundos y disfruta sin esperas.</p>
+                <form id="reservation-form" class="form">
+                    <div class="form-group">
+                        <label for="name">Nombre Completo</label>
+                        <input type="text" id="name" name="name" placeholder="Ej. Juan Pérez" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Fecha</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Hora</label>
+                            <input type="time" id="time" name="time" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="guests">Número de Personas</label>
+                            <select id="guests" name="guests" required>
+                                <option value="" disabled selected>Selecciona...</option>
+                                <option value="1">1 Persona</option>
+                                <option value="2">2 Personas</option>
+                                <option value="3">3 Personas</option>
+                                <option value="4">4 Personas</option>
+                                <option value="5">5 Personas</option>
+                                <option value="6">6+ Personas (Mesa Especial)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="zone">Zona de Preferencia</label>
+                            <select id="zone" name="zone">
+                                <option value="Salón Principal" selected>Salón Principal (Atenuado)</option>
+                                <option value="Terraza Exclusiva">Terraza Exclusiva</option>
+                                <option value="Barra & Lounge">Barra & Lounge</option>
+                                <option value="Área Privada">Espacio Privado VIP</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="occasion">Motivo de la Visita (Opcional)</label>
+                        <select id="occasion" name="occasion">
+                            <option value="Cena Casual" selected>Cena Casual / Degustación</option>
+                            <option value="Aniversario">Aniversario / Velada Romántica</option>
+                            <option value="Cumpleaños">Celebración de Cumpleaños</option>
+                            <option value="Reunión de Negocios">Reunión de Negocios</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Petición Especial o Alergias</label>
+                        <textarea id="message" name="message" rows="3" placeholder="Indícanos alguna restricción alimentaria o requerimiento específico..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary full-width">Confirmar Reserva</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de Confirmación de Reserva VIP -->
+    <div id="reservation-modal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-card">
+            <button class="modal-close" id="modal-close-btn" aria-label="Cerrar ventana">&times;</button>
+            <div class="modal-badge">Sabor a Brasa &bull; Reservación Confirmada</div>
+            <h3 class="modal-title">Tu Mesa está <span>Asegurada</span></h3>
+            <p class="modal-subtitle">Hemos preparado todo para brindarte una experiencia gastronómica inolvidable.</p>
+
+            <div class="reservation-summary">
+                <div class="summary-item">
+                    <span class="summary-label">Titular</span>
+                    <span class="summary-value" id="summary-name">Juan Pérez</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Experiencia</span>
+                    <span class="summary-value" id="summary-guests">Mesa para 4 Personas</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Fecha y Hora</span>
+                    <span class="summary-value" id="summary-datetime">Viernes 15 Oct &bull; 8:30 PM</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Zona & Ocasión</span>
+                    <span class="summary-value" id="summary-zone-occasion">Salón Principal &bull; Cena Casual</span>
+                </div>
+                <div class="summary-item full" id="summary-notes-container">
+                    <span class="summary-label">Nota Especial</span>
+                    <span class="summary-value" id="summary-notes">Ninguna</span>
+                </div>
+            </div>
+
+            <div class="modal-notice">
+                <p>Te esperamos con 15 minutos de tolerancia para garantizar la frescura de nuestra brasa.</p>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="btn-primary" id="modal-accept-btn">Entendido</button>
+                <a href="#" id="modal-whatsapp-btn" target="_blank" rel="noopener noreferrer" class="btn-secondary-modal">
+                    Notificar a la Hostess por WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">Sabor<span>Brasa</span></a>
+                <p>La excelencia en pollo a la brasa desde 2026.</p>
+            </div>
+            <div class="footer-info">
+                <h4>Ubícanos</h4>
+                <p>Av. Principal 123, Miraflores, Lima</p>
+                <p>Teléfono: (01) 456-7890</p>
+            </div>
+            <div class="footer-hours">
+                <h4>Horario</h4>
+                <p>Lunes - Domingo: 12:00 PM - 11:00 PM</p>
+            </div>
+            <div class="footer-social">
+                <h4>Síguenos</h4>
+                <div class="social-links">
+                    <a href="#">FB</a>
+                    <a href="#">IG</a>
+                    <a href="#">TW</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p>&copy; 2026 Sabor a Brasa. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

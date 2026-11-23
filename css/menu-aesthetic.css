@@ -1,0 +1,295 @@
+:root {
+    --primary-color: #f39c12;
+    --dark-color: #0a0a0a;
+    --light-color: #ffffff;
+    --text-muted: #888;
+    --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    overflow: hidden; /* Prevent body scroll, use container scroll */
+}
+
+/* Header */
+.menu-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: linear-gradient(to bottom, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.back-link {
+    color: var(--light-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.7;
+    transition: var(--transition);
+}
+
+.back-link:hover {
+    opacity: 1;
+    color: var(--primary-color);
+    transform: translateX(-4px);
+}
+
+/* Category Navigation Pills */
+.category-nav {
+    display: flex;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px 6px;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cat-pill {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.65);
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cat-pill:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.cat-pill.active {
+    color: #0a0a0a;
+    background: var(--primary-color);
+    box-shadow: 0 2px 10px rgba(243, 156, 18, 0.35);
+}
+
+.menu-reserve-btn {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--primary-color);
+    border: 1px solid rgba(243, 156, 18, 0.4);
+    background: rgba(243, 156, 18, 0.08);
+    transition: all 0.3s ease;
+}
+
+.menu-reserve-btn:hover {
+    background: var(--primary-color);
+    color: #0a0a0a;
+    box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
+}
+
+/* Dish Pairing & Chef Notes Tag */
+.dish-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 15px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: rgba(243, 156, 18, 0.06);
+    border-left: 2px solid var(--primary-color);
+    font-style: italic;
+}
+
+/* Magazine Container */
+.magazine-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none; /* Firefox */
+}
+
+.magazine-container::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+.menu-slide {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    scroll-snap-align: start;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Alternate layout */
+.menu-slide:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.slide-image {
+    flex: 1;
+    height: 100%;
+    position: relative;
+}
+
+.slide-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+    transition: transform 1.5s ease;
+}
+
+.menu-slide:hover .slide-image img {
+    transform: scale(1.05);
+}
+
+.slide-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10%;
+    background-color: var(--dark-color);
+    z-index: 10;
+}
+
+.slide-category {
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.slide-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 0.9;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.slide-title span {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--light-color);
+}
+
+.slide-description {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 400px;
+    margin-bottom: 40px;
+    line-height: 1.8;
+}
+
+.slide-price {
+    font-size: 2rem;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Navigation Dots */
+.magazine-nav {
+    position: fixed;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 100;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border: 1px solid var(--light-color);
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.dot.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: scale(1.5);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .menu-slide, .menu-slide:nth-child(even) {
+        flex-direction: column;
+    }
+
+    .slide-image {
+        height: 50vh;
+    }
+
+    .slide-content {
+        height: 50vh;
+        padding: 40px;
+    }
+
+    .slide-title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-header {
+        padding: 15px 20px;
+    }
+    .category-nav {
+        gap: 4px;
+        padding: 3px 5px;
+    }
+    .cat-pill {
+        font-size: 0.7rem;
+        padding: 6px 10px;
+        letter-spacing: 0.5px;
+    }
+    .menu-reserve-btn {
+        display: none; /* Hide on small screens to avoid header crowding */
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-header {
+        padding: 12px 15px;
+    }
+    .back-link {
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+    }
+    .cat-pill {
+        font-size: 0.65rem;
+        padding: 5px 8px;
+    }
+    .magazine-nav {
+        right: 15px;
+    }
+}
